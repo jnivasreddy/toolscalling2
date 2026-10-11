@@ -4,7 +4,7 @@ import streamlit as st
 
 from session_tools import sign_in
 
-CHAT_API_URL = "https://hopscotch-chat-chain.vercel.app"
+CHAT_API_URL = "http://127.0.0.1:8084"
 
 st.title("Hopscotch Chat")
 

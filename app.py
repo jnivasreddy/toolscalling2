@@ -5,7 +5,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 from session_tools import API_URL
 from redis_memory import save_message, load_history
 
-from shop_chain import chain
+from shop_tools import chain
 
 app = FastAPI()
 
@@ -41,6 +41,9 @@ def chat(user_input: dict, authorization: str = Header()):
 
     # Save the question and answer for the next request.
     save_message(user_id, HumanMessage(content=user_input["query"]))
-    save_message(user_id, AIMessage(content=response["answer"]))
+    save_message(user_id, AIMessage(content=response.content))
 
     return {"answer": response.content}
+
+
+
